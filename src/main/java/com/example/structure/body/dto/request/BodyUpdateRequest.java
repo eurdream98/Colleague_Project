@@ -9,9 +9,9 @@ import javax.validation.constraints.NotBlank;
 @RequiredArgsConstructor
 public class BodyUpdateRequest {
     @NotBlank(message="몸무게를 입력해주세요")
-    private final Long weight;
+    private final float weight;
     @NotBlank(message="체지방률 입력해주세요")
-    private final Long fat;
+    private final float fat;
     @NotBlank(message="골격근량을 입력해주세요")
-    private final Long muscle;
+    private final float muscle;
 }

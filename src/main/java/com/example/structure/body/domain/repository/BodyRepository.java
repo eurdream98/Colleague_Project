@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BodyRepository extends JpaRepository<Body,Long> {
-    boolean existsByMemberMemberIdAndBodyCode(final Long memberId, final Long bodyCode);
-    List<Body> findAllByMemberMemberId(final Long memberId);
+    boolean existsByMemberCodeAndBodyCode(final Integer memberCode, final Integer bodyCode);
+    List<Body> findAllByMemberCode(final int memberCode);
 
 
 }

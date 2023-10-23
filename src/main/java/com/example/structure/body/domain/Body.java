@@ -24,44 +24,46 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @NoArgsConstructor(access=PROTECTED)
 @SQLDelete(sql = "UPDATE body SET status = 'DELETED' WHERE body_code = ?")
-@Where(clause = "status = 'USABLE'")
+@Where(clause = "state = 'USABLE'")
 @Table(name="body")
 public class Body extends BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long bodyCode;
+    private Integer  bodyCode;
 
     @Column(nullable=false)
-    private Long weight;
+    private float    weight;
 
     @Column(nullable=false)
-    private Long fat;
+    private float    fat;
 
     @Column(nullable=false)
-    private Long Muscle;
+    private float    muscle;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name="memberId")
-    private Member member;
+    @JoinColumn(name="member_code")
+    private Member memberCode;
 
-    public Body(final Long bodyCode, final Long weight, final Long fat, final Long muscle, final Member members) {
+
+    public Body( Integer bodyCode, float weight, float fat, float muscle, Member memberCode) {
         super(USABLE);
         this.bodyCode = bodyCode;
         this.weight = weight;
         this.fat = fat;
-        Muscle = muscle;
-        this.member = member;
+        this.muscle = muscle;
+        this.memberCode = memberCode;
     }
 
-   public static Body of( final Long weight, final Long fat, final Long muscle, final Member member)
+    public static Body of(float weight, float fat, float muscle, Member memberCode)
    {
-       return new Body(null,weight,fat,muscle,member);
+       return new Body(0,weight,fat,muscle,memberCode);
+//       return new Body();
    }
 
    public void update(BodyUpdateRequest bodyUpdateRequest){
         this.weight=bodyUpdateRequest.getWeight();
         this.fat=bodyUpdateRequest.getFat();
-        this.Muscle=bodyUpdateRequest.getMuscle();
+        this.muscle=bodyUpdateRequest.getMuscle();
    }
 
 

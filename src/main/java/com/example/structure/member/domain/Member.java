@@ -24,22 +24,34 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long memberId;
+    private Integer memberCode;
 
     @Column(nullable = false, length = 30)
-    private String socialLoginId;
+    private String memberSocialId;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String nickname;
+    private String memberName;
 
     @Column(nullable = false)
-    private LocalDateTime lastLoginDate;
+    private Character memberGender;
 
     @Column(nullable = false)
-    private String imageUrl;
+    private Integer memberAge;
 
-    @Enumerated(value = STRING)
-    private MemberState status;
+    @Column(nullable = false)
+    private String memberPhone;
+
+    @Column(nullable = false)
+    private String memberEmail;
+
+    @Column(nullable = false)
+    private String memberNickName;
+
+    @Column(nullable = false)
+    private Integer goalCategoryCode;
+
+    @Enumerated(EnumType.STRING)
+    private MemberState state;
 
     @CreatedDate
     @Column(updatable = false)
@@ -48,15 +60,33 @@ public class Member {
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-    public Member(final Long memberId, final String socialLoginId, final String nickname, final String imageUrl) {
-        this.memberId = memberId;
-        this.socialLoginId = socialLoginId;
-        this.nickname = nickname;
-        this.lastLoginDate = LocalDateTime.now();
-        this.imageUrl = imageUrl;
-        this.status = ACTIVE;
-        this.createdAt = LocalDateTime.now();
-        this.modifiedAt = LocalDateTime.now();
-    }
+//    public Member(Long memberCode, String memberSocialId, String memberName, String memberGender, int memberAge, String memberPhone, String memberEmail, String memberNickName, String goalCategoryCode, MemberState state, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+//        this.memberCode = memberCode;
+//        this.memberSocialId = memberSocialId;
+//        this.memberName = memberName;
+//        this.memberGender = memberGender;
+//        this.memberAge = memberAge;
+//        this.memberPhone = memberPhone;
+//        this.memberEmail = memberEmail;
+//        this.memberNickName = memberNickName;
+//        this.goalCategoryCode = goalCategoryCode;
+//        this.state = ACTIVE;
+//        this.createdAt = createdAt;
+//        this.modifiedAt = modifiedAt;
+//    }
 
+    public Member(Integer memberCode, String memberSocialId, String memberName, Character memberGender, Integer memberAge, String memberPhone, String memberEmail, String memberNickName, Integer goalCategoryCode, MemberState state, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.memberCode = memberCode;
+        this.memberSocialId = memberSocialId;
+        this.memberName = memberName;
+        this.memberGender = memberGender;
+        this.memberAge = memberAge;
+        this.memberPhone = memberPhone;
+        this.memberEmail = memberEmail;
+        this.memberNickName = memberNickName;
+        this.goalCategoryCode = goalCategoryCode;
+        this.state = state;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
 }

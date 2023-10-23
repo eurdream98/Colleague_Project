@@ -2,12 +2,10 @@ package com.example.structure.body.presentation;
 
 import com.example.structure.body.dto.response.BodyResponse;
 import com.example.structure.body.service.BodyService;
+import com.example.structure.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +19,8 @@ public class BodyController {
     public ResponseEntity<List<BodyResponse>> getBody(
 
     ){
-        final List<BodyResponse> bodyResponses = bodyService.getAllBodys(1L);
+
+        final List<BodyResponse> bodyResponses = bodyService.getAllBodys(1);
         return ResponseEntity.ok(bodyResponses);
     }
 }
