@@ -29,6 +29,7 @@ public class Member {
     @Column(nullable = false, length = 30)
     private String memberSocialId;
 
+
     @Column(nullable = false, unique = true, length = 20)
     private String memberName;
 
