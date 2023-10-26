@@ -52,7 +52,7 @@ public class Member {
     private Integer goalCategoryCode;
 
     @Enumerated(EnumType.STRING)
-    private MemberState state;
+    private MemberState status;
 
     @CreatedDate
     @Column(updatable = false)
@@ -61,7 +61,7 @@ public class Member {
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-//    public Member(Long memberCode, String memberSocialId, String memberName, String memberGender, int memberAge, String memberPhone, String memberEmail, String memberNickName, String goalCategoryCode, MemberState state, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+//    public Member(Long memberCode, String memberSocialId, String memberName, String memberGender, int memberAge, String memberPhone, String memberEmail, String memberNickName, String goalCategoryCode, MemberState status, LocalDateTime createdAt, LocalDateTime modifiedAt) {
 //        this.memberCode = memberCode;
 //        this.memberSocialId = memberSocialId;
 //        this.memberName = memberName;
@@ -76,7 +76,7 @@ public class Member {
 //        this.modifiedAt = modifiedAt;
 //    }
 
-    public Member(Integer memberCode, String memberSocialId, String memberName, Character memberGender, Integer memberAge, String memberPhone, String memberEmail, String memberNickName, Integer goalCategoryCode, MemberState state, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Member(Integer memberCode, String memberSocialId, String memberName, Character memberGender, Integer memberAge, String memberPhone, String memberEmail, String memberNickName, Integer goalCategoryCode, MemberState status, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.memberCode = memberCode;
         this.memberSocialId = memberSocialId;
         this.memberName = memberName;
@@ -86,7 +86,7 @@ public class Member {
         this.memberEmail = memberEmail;
         this.memberNickName = memberNickName;
         this.goalCategoryCode = goalCategoryCode;
-        this.state = state;
+        this.status = status;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
     }

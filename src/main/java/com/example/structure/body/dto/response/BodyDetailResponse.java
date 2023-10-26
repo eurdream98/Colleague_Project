@@ -18,7 +18,7 @@ public class BodyDetailResponse {
     private final float weight;
     private final float fat;
     private final float muscle;
-    private final StatusType state; // state 필드 추가
+    private final StatusType status; // state 필드 추가
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime createdAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

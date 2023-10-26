@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional
 public class BodyService {
-
+    private final Body body;
     private final BodyRepository bodyRepository;
     private final MemberRepository memberRepository;
 
     @Transactional(readOnly = true)
    public List<BodyResponse> getAllBodys(final Integer memberCode){
-        final List<Body> bodys = bodyRepository.findAllByMemberCode(memberCode);
+        final List<Body> bodys = bodyRepository.findAllByMemberCodeMemberCode(memberCode);
         return bodys.stream()
                 .map(body -> BodyResponse.from(body))
                 .collect(Collectors.toList());

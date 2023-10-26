@@ -16,7 +16,7 @@ public class BodyResponse {
     private final float weight;
     private final float fat;
     private final float muscle;
-    private final StatusType state;
+    private final StatusType status;
     public static BodyResponse from(final Body body) {
         return new BodyResponse(
                 body.getBodyCode(),
