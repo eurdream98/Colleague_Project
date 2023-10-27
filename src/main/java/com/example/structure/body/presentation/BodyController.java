@@ -1,14 +1,20 @@
 package com.example.structure.body.presentation;
 
+import com.example.structure.body.domain.Body;
+import com.example.structure.body.dto.request.BodyRequest;
 import com.example.structure.body.dto.response.BodyResponse;
 import com.example.structure.body.service.BodyService;
 import com.example.structure.member.domain.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.structure.member.domain.MemberState.ACTIVE;
 
@@ -25,5 +31,24 @@ public class BodyController {
         final List<BodyResponse> bodyResponses = bodyService.getAllBodys(memberCode);
         return ResponseEntity.ok(bodyResponses);
     }
+    @DeleteMapping("/{memberCode}")
+    public void deleteByMemberCode(@PathVariable Integer memberCode){
+        bodyService.deleteByMemberCode(memberCode);
+    }
+
+    @PostMapping
+    public ResponseEntity<Body> insert(@RequestBody BodyRequest bodyRequest) {
+       Body body = bodyService.insert(bodyRequest);
+       return new ResponseEntity<>(body, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{memberCode}/latest")
+    public List<BodyResponse> getBodyDetail(@PathVariable Integer memberCode){
+
+
+        final List<BodyResponse> bodyResponses = bodyService.getAllBodys(memberCode);
+        List<BodyResponse> lastBodyResponse = bodyResponses.subList(bodyResponses.size() - 1, bodyResponses.size());
+
+        return lastBodyResponse;
+    }
 }
-//new Member(1,"고동환","김동환",'남',25,"010","eurd","빙색이",3,ACTIVE,localDateTime1,localDateTime2)

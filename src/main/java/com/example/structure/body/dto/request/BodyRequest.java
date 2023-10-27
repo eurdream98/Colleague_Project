@@ -4,14 +4,15 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @RequiredArgsConstructor
 public class BodyRequest {
-    @NotBlank(message="몸무게를 입력해주세요")
+    @NotNull(message="몸무게를 입력해주세요")
     private final float weight;
-    @NotBlank(message="체지방률 입력해주세요")
+    @NotNull(message="체지방률 입력해주세요")
     private final float fat;
-    @NotBlank(message="골격근량을 입력해주세요")
+    @NotNull(message="골격근량을 입력해주세요")
     private final float muscle;
-
 }

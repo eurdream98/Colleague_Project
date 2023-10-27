@@ -2,12 +2,14 @@ package com.example.structure.member.domain;
 
 import static com.example.structure.member.domain.MemberState.ACTIVE;
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
 
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
@@ -17,9 +19,11 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = PROTECTED)
-@SQLDelete(sql = "UPDATE member SET status = 'DELETED' WHERE id = ?")
-@Where(clause = "status = 'ACTIVE'")
+@Setter
+@NoArgsConstructor
+//        (access = PROTECTED)
+@SQLDelete(sql = "UPDATE member SET state = 'DELETED' WHERE id = ?")
+@Where(clause = "state = 'ACTIVE'")
 public class Member {
 
     @Id
@@ -27,7 +31,7 @@ public class Member {
     private Integer memberCode;
 
     @Column(nullable = false, length = 30)
-    private String memberSocialId;
+    private String memberSocialid;
 
 
     @Column(nullable = false, unique = true, length = 20)
@@ -46,13 +50,13 @@ public class Member {
     private String memberEmail;
 
     @Column(nullable = false)
-    private String memberNickName;
+    private String memberNickname;
 
     @Column(nullable = false)
-    private Integer goalCategoryCode;
+    private Integer goalcategoryCode;
 
     @Enumerated(EnumType.STRING)
-    private MemberState status;
+    private MemberState state;
 
     @CreatedDate
     @Column(updatable = false)
@@ -76,17 +80,17 @@ public class Member {
 //        this.modifiedAt = modifiedAt;
 //    }
 
-    public Member(Integer memberCode, String memberSocialId, String memberName, Character memberGender, Integer memberAge, String memberPhone, String memberEmail, String memberNickName, Integer goalCategoryCode, MemberState status, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Member(Integer memberCode, String memberSocialid, String memberName, Character memberGender, Integer memberAge, String memberPhone, String memberEmail, String memberNickname, Integer goalcategoryCode, MemberState state, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.memberCode = memberCode;
-        this.memberSocialId = memberSocialId;
+        this.memberSocialid = memberSocialid;
         this.memberName = memberName;
         this.memberGender = memberGender;
         this.memberAge = memberAge;
         this.memberPhone = memberPhone;
         this.memberEmail = memberEmail;
-        this.memberNickName = memberNickName;
-        this.goalCategoryCode = goalCategoryCode;
-        this.status = status;
+        this.memberNickname = memberNickname;
+        this.goalcategoryCode = goalcategoryCode;
+        this.state = state;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
     }
