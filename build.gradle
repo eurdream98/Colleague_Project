@@ -41,6 +41,8 @@ dependencies {
     // Spring Boot Test 의존성 (선택적)
     // Spring Boot 프로젝트를 사용하는 경우에만 추가
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
 }
 
 tasks.named('test') {
