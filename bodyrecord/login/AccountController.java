@@ -24,7 +24,7 @@ public class AccountController {
     @GetMapping(value = "/auth/{socialLoginType}/callback")
     public BaseResponse<GetSocialOAuthRes> callback (
             @PathVariable(name = "socialLoginType") String socialLoginPath,
-            @RequestParam(name = "code") String code)throws IOException, BaseException {
+            @RequestParam(name = "code") String code)throws IOException,BaseException {
         System.out.println(">> 소셜 로그인 API 서버로부터 받은 code :" + code);
         Constant.SocialLoginType socialLoginType = Constant.SocialLoginType.valueOf(socialLoginPath.toUpperCase());
         GetSocialOAuthRes getSocialOAuthRes = oAuthService.oAuthLogin(socialLoginType, code);

@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -89,15 +88,15 @@ public class GoogleOauth implements SocialOauth {
     }
 
     public ResponseEntity<String> requestUserInfo(GoogleOAuthToken oAuthToken) {
-        String GOOGLE_USERINFO_REQUEST_URL = "https://www.googleapis.com/oauth2/v1/userinfo";
+        String GOOGLE_USERINFO_REQUEST_URL="https://www.googleapis.com/oauth2/v1/userinfo";
 
-        // Header에 accessToken을 담는다.
+        //header에 accessToken을 담는다.
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer " + oAuthToken.getAccess_token());
+        headers.add("Authorization","Bearer "+oAuthToken.getAccess_token());
 
-        // HttpEntity를 하나 생성해 헤더를 담아서 RestTemplate으로 구글과 통신하게 된다.
-        HttpEntity<?> request = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(GOOGLE_USERINFO_REQUEST_URL, HttpMethod.GET, request, String.class);
+        //HttpEntity를 하나 생성해 헤더를 담아서 restTemplate으로 구글과 통신하게 된다.
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity(headers);
+        ResponseEntity<String> response = restTemplate.getForEntity(GOOGLE_USERINFO_REQUEST_URL, String.class);
 
         System.out.println("response.getBody() = " + response.getBody());
         return response;

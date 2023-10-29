@@ -30,6 +30,7 @@ public class Member {
     @GeneratedValue(strategy = IDENTITY)
     private Integer memberCode;
 
+    //jwt
     @Column(nullable = false, length = 30)
     private String memberSocialid;
 

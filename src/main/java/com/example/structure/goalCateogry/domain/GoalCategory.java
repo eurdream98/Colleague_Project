@@ -43,5 +43,11 @@ public class GoalCategory {
         USEABLE,
         DELETED
     }
-
+    public GoalCategory(Integer goalcategoryCode, String goalcategoryName){
+        this.goalcategoryCode=goalcategoryCode;
+        this.goalcategoryName=goalcategoryName;
+    }
+public static GoalCategory of(String goalcategoryName){
+        return new GoalCategory(1,goalcategoryName);
+}
 }
