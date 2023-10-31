@@ -31,24 +31,5 @@ public class BodyController {
         final List<BodyResponse> bodyResponses = bodyService.getAllBodys(memberCode);
         return ResponseEntity.ok(bodyResponses);
     }
-    @DeleteMapping("/{memberCode}")
-    public void deleteByMemberCode(@PathVariable Integer memberCode){
-        bodyService.deleteByMemberCode(memberCode);
-    }
 
-    @PostMapping
-    public ResponseEntity<Body> insert(@RequestBody BodyRequest bodyRequest) {
-       Body body = bodyService.insert(bodyRequest);
-       return new ResponseEntity<>(body, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{memberCode}/latest")
-    public List<BodyResponse> getBodyDetail(@PathVariable Integer memberCode){
-
-
-        final List<BodyResponse> bodyResponses = bodyService.getAllBodys(memberCode);
-        List<BodyResponse> lastBodyResponse = bodyResponses.subList(bodyResponses.size() - 1, bodyResponses.size());
-
-        return lastBodyResponse;
-    }
 }

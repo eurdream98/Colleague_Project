@@ -34,27 +34,7 @@ private final GoalCategoryRepository goalCategoryRepository;
                 .map(body -> BodyResponse.from(body))
                 .collect(Collectors.toList());
     }
-    public void deleteByMemberCode(final Integer memberCode){
-        bodyRepository.deleteByMemberCodeMemberCode(memberCode);
-    }
-
-    @Transactional
-    public Body insert(BodyRequest bodyRequest){
-        GoalCategory goalCategory = new GoalCategory();
-        goalCategory.setGoalcategoryName("Some Category Name");
-        goalCategory = goalCategoryRepository.save(goalCategory);
-        Member member = new Member();
-        member.setMemberCode(1);
-        member.setMemberAge(30);
-        member.setMemberGender('남');
-        member.setMemberName("고동환");
-        member.setMemberSocialid("eur");
-        member.setState(MemberState.ACTIVE);
-        member.setGoalcategoryCode(goalCategory.getGoalcategoryCode());
-        member = memberRepository.save(member);
-        Body body = Body.of(bodyRequest.getWeight(),bodyRequest.getFat(),bodyRequest.getMuscle(),member);
-        return bodyRepository.save(body);
-    }
+//
 
 
 }

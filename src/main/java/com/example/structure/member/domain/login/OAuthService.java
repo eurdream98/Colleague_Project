@@ -57,6 +57,7 @@ private final MemberRepository memberRepository;
                     String jwtToken=jwtService.createJwt(user_num,user_id);
                     //액세스 토큰과 jwtToken, 이외 정보들이 담긴 자바 객체를 다시 전송한다.
                     GetSocialOAuthRes getSocialOAuthRes=new GetSocialOAuthRes(jwtToken,user_num,oAuthToken.getAccess_token(),oAuthToken.getToken_type());
+                    System.out.println(getSocialOAuthRes);
                     return getSocialOAuthRes;
                 }
                 else {

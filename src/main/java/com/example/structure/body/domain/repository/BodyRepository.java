@@ -10,13 +10,11 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BodyRepository extends JpaRepository<Body,Long> {
-    boolean existsByMemberCodeAndBodyCode(final Integer memberCode, final Integer bodyCode);
+
 
 
     List<Body> findAllByMemberCodeMemberCode(final Integer memberCode);
 
-//    Body save(BodyRequest bodyRequest);
 
-    public void deleteByMemberCodeMemberCode(final Integer memberCode);
 
 }
