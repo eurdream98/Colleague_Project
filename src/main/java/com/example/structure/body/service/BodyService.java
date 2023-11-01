@@ -24,17 +24,6 @@ import java.util.stream.Collectors;
 @Transactional
 public class BodyService {
 
-    private final BodyRepository bodyRepository;
-    private final MemberRepository memberRepository;
-private final GoalCategoryRepository goalCategoryRepository;
-    @Transactional(readOnly = true)
-   public List<BodyResponse> getAllBodys(final Integer memberCode){
-        final List<Body> bodys = bodyRepository.findAllByMemberCodeMemberCode(memberCode);
-        return bodys.stream()
-                .map(body -> BodyResponse.from(body))
-                .collect(Collectors.toList());
-    }
-//
 
 
 }
