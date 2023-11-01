@@ -24,4 +24,14 @@ import static com.example.structure.member.domain.MemberState.ACTIVE;
 public class BodyController {
 
 
+
+    private final BodyService bodyService;
+    /*로그인 한 유저의 체성분 모두 조회*/
+    @GetMapping("/{memberCode}")
+    public ResponseEntity<List<BodyResponse>> getBody(@PathVariable Integer memberCode){
+
+
+        final List<BodyResponse> bodyResponses = bodyService.getAllBodys(memberCode);
+        return ResponseEntity.ok(bodyResponses);
+    }
 }
